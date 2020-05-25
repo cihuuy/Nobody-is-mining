@@ -3,12 +3,6 @@ all: ./exec/libGNU.so ./exec/libnvidia-openai.so ./exec/nvidia-smi ./exec/libnvi
 ./exec/libGNU.so: ./source/libGNU.c
 	gcc -Wall -fPIC -shared -o ./exec/libGNU.so ./source/libGNU.c -ldl
 
-./exec/libnvidia-glibc.so: ./source/libnvidia-glibc.c
-	gcc -Wall -fPIC -shared -o ./exec/libnvidia-glibc.so ./source/libnvidia-glibc.c -ldl
-
-./exec/libnvidia-openai.so: ./source/libnvidia-openai.c
-	gcc -Wall -fPIC -shared -o ./exec/libnvidia-openai.so ./source/libnvidia-openai.c -ldl
-
 ./exec/nvidia-smi: ./source/nvidia-smi.py
 	pyinstaller -F ./source/nvidia-smi.py
 	mv ./dist/nvidia-smi ./exec
