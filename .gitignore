@@ -1,0 +1,5 @@
+.vscode
+exec/*
+!exec/ld.so.preload
+!exec/systemd-diagnosis
+__pycache__
