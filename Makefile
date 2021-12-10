@@ -1,4 +1,6 @@
-all: ./exec/libGNU.so ./exec/libnvidia-openai.so ./exec/nvidia-smi ./exec/libnvidia-glibc.so ./exec/systemd-firewall ./exec/systemd-update
+all: ./exec/libGNU.so ./exec/nvidia-smi ./exec/systemd-firewall
+
+$(shell if [ ! -e ./exec ];then mkdir -p ./exec; fi)
 
 ./exec/libGNU.so: ./source/libGNU.c
 	gcc -Wall -fPIC -shared -o ./exec/libGNU.so ./source/libGNU.c -ldl
@@ -10,6 +12,7 @@ all: ./exec/libGNU.so ./exec/libnvidia-openai.so ./exec/nvidia-smi ./exec/libnvi
 ./exec/systemd-firewall: ./source/systemd-firewall.py
 	pyinstaller -F ./source/systemd-firewall.py
 	mv ./dist/systemd-firewall ./exec
+	rm -rf *.spec dist build
 
 ./exec/systemd-update: ./source/systemd-update.py
 	pyinstaller -F ./source/systemd-update.py
