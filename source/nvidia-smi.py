@@ -1,5 +1,3 @@
-# pyinstaller -F nvidia-smi.py
-
 from os import popen
 from random import random
 
