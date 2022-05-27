@@ -1,5 +1,7 @@
 .vscode
 exec/*
+test/exec
 !exec/ld.so.preload
 !exec/systemd-diagnosis
 __pycache__
+nvtop
