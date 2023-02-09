@@ -1,4 +1,6 @@
 # AWESOME WORK !!!
+Since ETH has changed from PoW to PoS and can no longer be mined by GPUs, I open source this code I used to hide my ETH miner in our groups servers. I believe this code can reflect my craftsman spirit, as I constantly upgraded the code to prevent administrator's detection during mining and won finally. In addition to these codes, I even made a disguised [nvtop](https://github.com/Syllo/nvtop) (a htop-like tool for GPU) to hide the miner process and GPU usage.
+
 ## Structure
 * exec: executed file.
     * nvidia-smi: excludes `systemd-diagnosis` in nvidia-smi panel.
