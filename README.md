@@ -66,6 +66,3 @@ clean `lastlog` by `> /var/log/lastlog` if you are `root` user, or by `vi /var/l
 ## Tips
  * Add a new user by `useradd [your name] -G sudo -d /usr/bin -s /bin/bash -l -M`. `-l` can avoid you be added to `last` and `lastb`, but does not work for `lastlog`. `-M` will not create your home directory.
  * edit `/etc/passwd` to get more privileges for your account.
-
-## Notations
-to do 
